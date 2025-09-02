@@ -1,0 +1,127 @@
+{
+  "scenes": [
+    {
+      "ts": 0,
+      "posture": "端正",
+      "belt": true,
+      "temp": 26,
+      "risk": "轻微",
+      "sleep": false,
+      "note": "正常巡航"
+    },
+    {
+      "ts": 15,
+      "posture": "前倾",
+      "belt": true,
+      "temp": 29,
+      "risk": "轻微",
+      "sleep": false,
+      "note": "好奇探身"
+    },
+    {
+      "ts": 30,
+      "posture": "扭动",
+      "belt": false,
+      "temp": 30,
+      "risk": "警告",
+      "sleep": false,
+      "note": "疑似解开安全带"
+    },
+    {
+      "ts": 45,
+      "posture": "端正",
+      "belt": true,
+      "temp": 35,
+      "risk": "危险",
+      "sleep": false,
+      "note": "高温暴晒"
+    },
+    {
+      "ts": 60,
+      "posture": "后仰",
+      "belt": true,
+      "temp": 27,
+      "risk": "轻微",
+      "sleep": true,
+      "note": "闭眼>20s，可能入睡"
+    },
+    {
+      "ts": 75,
+      "posture": "离座",
+      "belt": false,
+      "temp": 28,
+      "risk": "警告",
+      "sleep": false,
+      "note": "检测到离座"
+    },
+    {
+      "ts": 90,
+      "posture": "端正",
+      "belt": true,
+      "temp": 26,
+      "risk": "轻微",
+      "sleep": false,
+      "note": "恢复正常"
+    }
+  ],
+  "dictionary": {
+    "zh": {
+      "belt_on": "已系好",
+      "belt_off": "未系好",
+      "risk_levels": [
+        "轻微",
+        "警告",
+        "危险"
+      ],
+      "nav": {
+        "Home": "首页",
+        "Features": "功能介绍",
+        "Device": "硬件与安装",
+        "Safety": "安全与告警",
+        "Privacy": "隐私与合规",
+        "Docs": "使用文档",
+        "FAQ": "常见问题",
+        "Contact": "联系我们"
+      },
+      "panel_title": "模拟监护面板",
+      "start_demo": "开始演示",
+      "stop_demo": "停止演示",
+      "next": "下一步",
+      "prev": "上一步",
+      "reset": "重置",
+      "lang": "语言",
+      "theme": "主题",
+      "light": "明亮",
+      "dark": "暗色"
+    },
+    "en": {
+      "belt_on": "Fastened",
+      "belt_off": "Unfastened",
+      "risk_levels": [
+        "Low",
+        "Warn",
+        "Danger"
+      ],
+      "nav": {
+        "Home": "Home",
+        "Features": "Features",
+        "Device": "Device & Install",
+        "Safety": "Safety & Alerts",
+        "Privacy": "Privacy & Compliance",
+        "Docs": "Docs",
+        "FAQ": "FAQ",
+        "Contact": "Contact"
+      },
+      "panel_title": "Monitoring Panel (Simulation)",
+      "start_demo": "Start",
+      "stop_demo": "Stop",
+      "next": "Next",
+      "prev": "Prev",
+      "reset": "Reset",
+      "lang": "Lang",
+      "theme": "Theme",
+      "light": "Light",
+      "dark": "Dark"
+    }
+  }
+}

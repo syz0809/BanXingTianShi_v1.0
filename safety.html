@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>SAFETY · 伴行天使-车载婴幼儿监护器</title>
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/components.css"/>
+  <link rel="stylesheet" href="styles/utilities.css"/>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/sim.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo">伴</div>
+          <div>伴行天使·车载婴幼儿监护器</div>
+        </div>
+        <div class="nav-links"><button class="theme-toggle">主题</button><a href="index.html" class="">首页</a><a href="features.html" class="">功能介绍</a><a href="device.html" class="">硬件与安装</a><a href="safety.html" class="active">安全与告警</a><a href="privacy.html" class="">隐私与合规</a><a href="docs.html" class="">使用文档</a><a href="faq.html" class="">常见问题</a><a href="contact.html" class="">联系我们</a></div>
+        <div class="control-bar">
+          <button class="btn btn-ghost" data-action="toggle-theme" aria-pressed="false">☀️ 明亮</button>
+          <button class="btn btn-ghost" data-action="toggle-lang">中文</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main><section class="section">
+  <div class="container">
+    <div id="safety-filter" class="m-10">
+      <button class="btn-chip chip active" data-level="全部">全部</button>
+      <button class="btn-chip chip" data-level="轻微">轻微</button>
+      <button class="btn-chip chip" data-level="警告">警告</button>
+      <button class="btn-chip chip" data-level="危险">危险</button>
+    </div>
+    <div class="grid-3">
+      <div class="card risk-card" data-level="低温"><div class="badge">低温</div><p>车内温度 5℃，建议升温。</p></div>
+      <div class="card risk-card" data-level="高温"><div class="badge">高温</div><p>车内温度 36℃，建议降温。</p></div>
+      <div class="card risk-card" data-level="离座"><div class="badge">离座</div><p>检测到离座，请检查安全带。</p></div>
+      <div class="card risk-card" data-level="昏睡"><div class="badge">昏睡</div><p>闭眼超 20s（示意）。</p></div>
+      <div class="card risk-card" data-level="遗忘"><div class="badge">遗忘</div><p>熄火后仍在座舱（示意）。</p></div>
+      <div class="card risk-card" data-level="碰撞"><div class="badge">碰撞</div><p>事故提示位（UI）。</p></div>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="section-title"><div class="dot"></div><h2>场景与告警规则</h2></div>
+    <div class="grid-2">
+      <div class="card">
+        <b>场景控制</b>
+        <div class="m-10 flex items-center gap-10">
+          <span>发动机</span><div id="ctrl-engine" class="switch" data-checked="true"></div>
+          <span>在座</span><div id="ctrl-present" class="switch" data-checked="true"></div>
+          <span>安全带</span><div id="ctrl-belt" class="switch" data-checked="true"></div>
+        </div>
+        <div class="grid-2">
+          <div class="stat"><div>发动机</div><div class="num" data-bind="engineOn">--</div></div>
+          <div class="stat"><div>在座</div><div class="num" data-bind="childPresent">--</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <b>当前告警</b>
+        <ul id="warnings"></ul>
+        <div class="callout m-10">切换左侧开关，查看不同场景下的告警组合。</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+  <footer class="footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <b>关于项目</b>
+          <p>本网站为软著用展示代码，仅使用 HTML + CSS，不包含任何 JS 脚本。</p>
+        </div>
+        <div>
+          <b>技术栈</b>
+          <p>纯静态页面、响应式布局、可直接离线打开预览。</p>
+        </div>
+        <div>
+          <b>声明</b>
+          <p>© 2025 伴行天使团队。面向车载婴幼儿照护的可视化与交互演示。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

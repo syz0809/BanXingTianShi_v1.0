@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>联系我们 · 伴行天使-车载婴幼儿监护器</title>
+  <!-- 保留公共样式 -->
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/components.css"/>
+  <link rel="stylesheet" href="styles/utilities.css"/>
+</head>
+<body>
+  <!-- 顶部导航（保持一致） -->
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <img src="assets/logo-angel.svg" alt="logo" width="36" height="36" class="logo"/>
+          <div class="title">伴行天使 · 车载婴幼儿监护器</div>
+        </div>
+        <button class="menu-btn" data-action="toggle-menu">菜单</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">首页</a>
+          <a href="features.html">功能介绍</a>
+          <a href="device.html">硬件与安装</a>
+          <a href="safety.html">安全与告警</a>
+          <a href="privacy.html">隐私与合规</a>
+          <a href="docs.html">使用文档</a>
+          <a href="faq.html">常见问题</a>
+          <a class="active" href="contact.html">联系我们</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="contact-hero">
+      <div class="container contact-hero-inner">
+        <div>
+          <span class="badge">CONTACT</span>
+          <h1>把问题、合作、反馈发给我们</h1>
+          <p class="lead">表单仅做本地确认，不会联网。收到你的信息后，我们会在 1 个工作日内通过邮箱联系。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 主体：左表单 + 右信息栏 -->
+    <section class="section">
+      <div class="container contact-layout">
+        <!-- 表单卡片 -->
+        <form class="card contact-card" id="contact-form" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <input class="input floating" id="name" name="name" autocomplete="name" required />
+              <label for="name">姓名</label>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <input class="input floating" id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required />
+              <label for="email">邮箱</label>
+              <small class="err"></small>
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <select class="input floating" id="topic" name="topic">
+                <option value="合作咨询">合作咨询</option>
+                <option value="试用体验">试用体验</option>
+                <option value="技术问题">技术问题</option>
+                <option value="其他">其他</option>
+              </select>
+              <label for="topic">主题</label>
+              <small class="err"></small>
+            </div>
+            <div class="field">
+              <input class="input floating" id="company" name="company"/>
+              <label for="company">单位/团队（可选）</label>
+              <small class="err"></small>
+            </div>
+          </div>
+
+          <div class="field">
+            <textarea class="input floating" id="message" name="message" rows="6" minlength="10" placeholder="说点什么…" required></textarea>
+            <label for="message">留言</label>
+            <div class="meta">
+              <small class="muted">至少 10 个字</small>
+              <small><span id="counter">0</span> / 800</small>
+            </div>
+            <small class="err"></small>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" type="submit" id="submit-btn" disabled>提交</button>
+            <span class="muted" id="form-tip">完善必填项后可提交</span>
+          </div>
+        </form>
+
+        <!-- 右栏信息卡 -->
+        <aside class="contact-aside">
+          <div class="card info">
+            <b>联系方式</b>
+            <ul class="info-list">
+              <li><span>邮箱</span><a href="mailto:angel@example.com">angel@example.com</a></li>
+              <li><span>地址</span>杭州市 · 滨江（示例）</li>
+              <li><span>时间</span>工作日 09:30–18:00</li>
+            </ul>
+          </div>
+
+          <div class="card info">
+            <b>常见问题</b>
+            <p class="muted">遇到安装、温度阈值、告警等问题？</p>
+            <a class="btn btn-outline" href="faq.html">前往 FAQ</a>
+          </div>
+
+          <div class="card map">
+            <b>地图（占位）</b>
+            <div class="map-box">
+              <svg viewBox="0 0 400 180" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#eef2ff"/><stop offset="1" stop-color="#ecfeff"/>
+                  </linearGradient>
+                </defs>
+                <rect width="400" height="180" rx="12" fill="url(#g)"/>
+                <circle cx="300" cy="70" r="8" fill="#4f46e5"/>
+                <text x="315" y="74" font-size="12" fill="#334155">Angel Team</text>
+                <path d="M30 140 H370" stroke="#cbd5e1" stroke-width="1"/>
+                <path d="M30 40 L180 60 L260 40 L370 60" stroke="#94a3b8" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 底部 CTA -->
+    <section class="section">
+      <div class="container">
+        <div class="card cta">
+          <div>
+            <h3>更快？直接邮件</h3>
+            <p class="muted">把你的需求、期望时间、联系人留给我们，会更快匹配到合适同学。</p>
+          </div>
+          <a class="btn btn-primary" href="mailto:angel@example.com">发送邮件</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <b>关于项目</b>
+          <p>本页用于联系与咨询，表单数据仅本地校验，不会联网。</p>
+        </div>
+        <div>
+          <b>技术栈</b>
+          <p>HTML / CSS / JS · 响应式 · 离线预览</p>
+        </div>
+        <div>
+          <b>声明</b>
+          <p>© 2025 伴行天使团队。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 公共脚本 -->
+  <script src="scripts/app.js"></script>
+
+  <!-- ===== 页面私有样式（仅影响本页） ===== -->
+  <style>
+    /* 版面 & 配色 */
+    .contact-hero{
+      background: radial-gradient(1100px 400px at -10% -40%, #eef2ff 0%, transparent 60%),
+                  radial-gradient(900px 320px at 110% 10%, #ecfeff 0%, transparent 60%),
+                  #fff;
+      border-bottom:1px solid var(--bd);
+    }
+    .contact-hero-inner{padding:48px 0}
+    .contact-hero h1{font-size:2.2rem;margin:.3em 0}
+    .lead{color:#475569}
+
+    .contact-layout{display:grid;grid-template-columns:1.4fr .8fr;gap:24px}
+    .contact-card{padding:18px 16px}
+    .contact-aside{display:flex;flex-direction:column;gap:16px}
+
+    /* 统一控件尺寸 + 浮动标签 */
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{position:relative}
+    .field .input{height:44px; padding:10px 12px; font-size:16px; line-height:24px}
+    .field textarea.input{height:auto; min-height:140px; line-height:1.6}
+    .field select.input{appearance:none; background:#fff}
+    .field .input.floating{padding-top:22px; padding-bottom:10px}
+    .field label{
+      position:absolute; left:12px; top:9px; color:#64748b; pointer-events:none;
+      transition:.16s; background:#fff; padding:0 6px; border-radius:6px;
+      transform-origin:left center;
+    }
+    /* 上浮态（JS 会给 .filled） */
+    .field.filled label{
+      transform: translateY(-12px) scale(.85);
+      color:#4f46e5;
+    }
+    /* select 默认有值，强制上浮 */
+    .field select.floating + label{transform:translateY(-12px) scale(.85); color:#64748b}
+    /* 自动填充时也上浮 */
+    .field .input.floating:-webkit-autofill + label{transform:translateY(-12px) scale(.85); color:#4f46e5}
+
+    /* 错误态与提示的对齐 */
+    .field .input.error{border-color: var(--danger)}
+    .field .err{color:#dc2626; margin-top:4px; min-height:1.2em; display:block; padding-left:2px}
+    .field .meta{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+
+    /* 提交区基线对齐 */
+    .actions{display:flex;align-items:center;gap:10px;margin-top:10px}
+    #form-tip{line-height:44px} /* 与按钮同高，视觉对齐 */
+
+    .info-list{list-style:none;margin:8px 0 0;padding:0}
+    .info-list li{display:flex;gap:10px;margin:6px 0}
+    .info-list li span{width:56px;color:#64748b}
+
+    .map .map-box{border:1px solid var(--bd);border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+    .cta{display:flex;align-items:center;justify-content:space-between}
+
+    /* Toast */
+    .toast{
+      position:fixed; bottom:24px; left:50%; transform:translateX(-50%);
+      background:#0ea5e9; color:#fff; padding:10px 14px; border-radius:12px;
+      box-shadow:var(--shadow); opacity:0; pointer-events:none; transition:.25s;
+    }
+    .toast.show{opacity:1}
+
+    @media (max-width:960px){
+      .contact-layout{grid-template-columns:1fr}
+      .form-grid{grid-template-columns:1fr}
+      .cta{flex-direction:column;align-items:flex-start;gap:10px}
+      #form-tip{line-height:1.6}
+    }
+  </style>
+
+  <!-- ===== 页面私有脚本（仅影响本页） ===== -->
+  <script>
+  (function(){
+    const $ = (s, el=document)=>el.querySelector(s);
+    const $$ = (s, el=document)=>Array.from(el.querySelectorAll(s));
+
+    const form = $('#contact-form');
+    const nameI = $('#name');
+    const emailI = $('#email');
+    const topicI = $('#topic');
+    const msgI = $('#message');
+    const submitBtn = $('#submit-btn');
+    const tip = $('#form-tip');
+    const counter = $('#counter');
+
+    // 让非 select 的输入有 placeholder 以配合 :placeholder-shown
+    $$('input.floating, textarea.floating').forEach(i=>{
+      if(!i.placeholder) i.setAttribute('placeholder',' ');
+    });
+
+    // 上浮状态同步
+    function syncFilled(el){
+      const field = el.closest('.field'); if(!field) return;
+      const v = (el.tagName === 'SELECT')
+        ? (el.value != null && String(el.value).length > 0)
+        : !!(el.value && el.value.trim().length);
+      field.classList.toggle('filled', v || document.activeElement === el);
+    }
+    $$('input.floating, textarea.floating, select.floating').forEach(el=>{
+      syncFilled(el);
+      el.addEventListener('input',  ()=>syncFilled(el));
+      el.addEventListener('change', ()=>syncFilled(el));
+      el.addEventListener('focus',  ()=>syncFilled(el));
+      el.addEventListener('blur',   ()=>syncFilled(el));
+    });
+    setTimeout(()=>$$('input.floating, textarea.floating, select.floating').forEach(syncFilled), 120);
+
+    // 字数统计
+    function updateCount(){
+      const len = (msgI.value || '').length;
+      if(len > 800){ msgI.value = msgI.value.slice(0,800); }
+      counter.textContent = (msgI.value || '').length;
+    }
+    msgI.addEventListener('input', updateCount);
+    updateCount();
+
+    // 校验
+    const emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    function validate(){
+      let ok = true; $$('.err', form).forEach(e=>e.textContent='');
+
+      if(!nameI.value.trim()){
+        ok = false; nameI.classList.add('error');
+        nameI.parentElement.querySelector('.err').textContent = '请填写姓名';
+      }else nameI.classList.remove('error');
+
+      if(!emailRe.test(emailI.value.trim())){
+        ok = false; emailI.classList.add('error');
+        emailI.parentElement.querySelector('.err').textContent = '邮箱格式不正确';
+      }else emailI.classList.remove('error');
+
+      if((msgI.value||'').trim().length < 10){
+        ok = false; msgI.classList.add('error');
+        msgI.parentElement.querySelector('.err').textContent = '留言至少 10 个字';
+      }else msgI.classList.remove('error');
+
+      submitBtn.disabled = !ok;
+      tip.textContent = ok ? '可以提交' : '完善必填项后可提交';
+      return ok;
+    }
+    form.addEventListener('input', validate);
+    validate();
+
+    // 提交：本地模拟成功 + 清空
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      if(!validate()) return;
+      const payload = {
+        name: nameI.value.trim(),
+        email: emailI.value.trim(),
+        topic: topicI.value,
+        company: $('#company').value.trim(),
+        message: msgI.value.trim(),
+        at: new Date().toISOString()
+      };
+      console.log('CONTACT_FORM_LOCAL_SUBMIT', payload); // 本地演示
+
+      toast('提交成功：我们会尽快通过邮箱联系你。');
+      form.reset();
+      $$('input.floating, textarea.floating, select.floating').forEach(syncFilled);
+      updateCount();
+      validate();
+    });
+
+    function toast(text){
+      let el = $('.toast');
+      if(!el){ el = document.createElement('div'); el.className = 'toast'; document.body.appendChild(el); }
+      el.textContent = text; el.classList.add('show');
+      setTimeout(()=>el.classList.remove('show'), 2200);
+    }
+  })();
+  </script>
+
+  <!-- Toast 容器 -->
+  <div class="toast" aria-live="polite"></div>
+</body>
+</html>
+
+<style>
+  /* ---- PATCH: 调整浮动标签位置（仅本页） ---- */
+  .field label {
+    top: 12px; /* 原来是 9px，往下移了 3px */
+  }
+  .field.filled label,
+  .field .input.floating:focus + label,
+  .field .input.floating:not(:placeholder-shown) + label {
+    transform: translateY(-10px) scale(.85); /* 原来 -12px，稍微下移一点 */
+  }
+</style>

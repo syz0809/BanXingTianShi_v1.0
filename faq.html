@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>常见问题 · 伴行天使-车载婴幼儿监护器</title>
+  <!-- 公共样式，继续保留 -->
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/components.css"/>
+  <link rel="stylesheet" href="styles/utilities.css"/>
+</head>
+<body>
+  <!-- 顶部导航（保持一致） -->
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <img src="assets/logo-angel.svg" alt="logo" width="36" height="36" class="logo"/>
+          <div class="title">伴行天使 · 车载婴幼儿监护器</div>
+        </div>
+        <button class="menu-btn" data-action="toggle-menu">菜单</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">首页</a>
+          <a href="features.html">功能介绍</a>
+          <a href="device.html">硬件与安装</a>
+          <a href="safety.html">安全与告警</a>
+          <a href="privacy.html">隐私与合规</a>
+          <a href="docs.html">使用文档</a>
+          <a class="active" href="faq.html">常见问题</a>
+          <a href="contact.html">联系我们</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="faq-hero">
+      <div class="container faq-hero-inner">
+        <div class="faq-hero-text">
+          <div class="badge">FAQ</div>
+          <h1>有问题？这里有清晰的答案</h1>
+          <p>从部署集成到隐私合规，伴行天使把“可视化监护”的关键点讲清楚。支持离线预览、可接后端、可扩展。</p>
+          <div class="faq-hero-cta">
+            <a class="btn btn-primary" href="#group-deploy">从部署开始</a>
+            <a class="btn btn-outline" href="contact.html">联系团队</a>
+          </div>
+        </div>
+        <div class="faq-hero-illu">
+          <img src="assets/hero-illustration.svg" alt="示意图"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- 主体：左侧目录 + 右侧问答 -->
+    <section class="section">
+      <div class="container faq-body">
+        <!-- 侧边目录（页面私有样式使其粘性 & 高亮） -->
+        <aside class="faq-aside" aria-label="FAQ 目录">
+          <nav class="faq-toc">
+            <a href="#group-deploy">使用与部署</a>
+            <a href="#group-feature">功能与数据</a>
+            <a href="#group-ui">交互与展示</a>
+            <a href="#group-privacy">隐私与合规</a>
+            <a href="#group-ext">扩展与定制</a>
+          </nav>
+          <div class="faq-note card">
+            <b>小贴士</b>
+            <p>点击问题可展开/收起。按 <span class="kbd">/</span> 可开启页面内搜索。</p>
+          </div>
+        </aside>
+
+        <!-- 右侧内容 -->
+        <div class="faq-content">
+          <!-- 组一：使用与部署 -->
+          <div id="group-deploy" class="faq-group card">
+            <div class="faq-group-head">
+              <div class="dot"></div><h2>使用与部署</h2>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">是否包含真实检测算法？</button>
+              <div class="faq-answer">
+                当前为界面与交互原型，不内置检测算法；页面已预留“状态位”（温度/安全带/闭眼时长等），接入后端后即可映射显示。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">需要后端吗？离线能用吗？</button>
+              <div class="faq-answer">
+                演示与评审无需后端、支持完全离线。双击 <span class="kbd">index.html</span> 即可打开。生产环境可通过接口接入设备与服务。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">如何部署到车机/平板？</button>
+              <div class="faq-answer">
+                通过浏览器或 WebView 直接加载本项目文件夹；数据交互可用本地 IPC、蓝牙/BLE、或局域网 REST/WebSocket。
+              </div>
+            </div>
+          </div>
+
+          <!-- 组二：功能与数据 -->
+          <div id="group-feature" class="faq-group card">
+            <div class="faq-group-head">
+              <div class="dot"></div><h2>功能与数据</h2>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">可以接入真实传感器（温度/安全带/摄像头）吗？</button>
+              <div class="faq-answer">
+                可以。前端提供占位组件与状态位：温度分级、安全带状态、闭眼时长等；对接后端返回值即可驱动 UI。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">温度阈值和单位如何配置？</button>
+              <div class="faq-answer">
+                演示默认℃；可在配置中心或本地存储定义阈值（如 ≤18℃ 偏低、≥33℃ 偏高），并在渲染层切换 ℃/℉。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">告警是如何触发与表现的？</button>
+              <div class="faq-answer">
+                演示提供“手动模拟按钮”；真实环境由后端推送告警类型（高温/低温/离座/昏睡等），前端切换对应文案与色级。
+              </div>
+            </div>
+          </div>
+
+          <!-- 组三：交互与展示 -->
+          <div id="group-ui" class="faq-group card">
+            <div class="faq-group-head">
+              <div class="dot"></div><h2>交互与展示</h2>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">界面适配哪些分辨率？</button>
+              <div class="faq-answer">
+                默认最大宽度 1200px，并内置断点；在常见平板与车机 WebView 中均可良好展示。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">是否支持多语言与主题色替换？</button>
+              <div class="faq-answer">
+                支持。文案可抽离为语言包；主题色在 <span class="kbd">styles/base.css</span> 的 <code>:root</code> 里修改 <code>--brand</code> 即可全局替换。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">是否提供键盘操作与无障碍支持？</button>
+              <div class="faq-answer">
+                问题可用键盘回车展开/收起，结构使用按钮与语义化标题，兼容读屏基础导航。
+              </div>
+            </div>
+          </div>
+
+          <!-- 组四：隐私与合规 -->
+          <div id="group-privacy" class="faq-group card">
+            <div class="faq-group-head">
+              <div class="dot"></div><h2>隐私与合规</h2>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">是否采集/上传个人信息？</button>
+              <div class="faq-answer">
+                原型不采集不上传任何个人信息。实际产品建议采用最小化采集、边缘优先、可审计与可撤回。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">合规需要注意哪些标准？</button>
+              <div class="faq-answer">
+                建议遵循《个人信息保护法》《数据安全法》及车规标准；对视频类数据尽量在端侧处理，仅上传脱敏摘要。
+              </div>
+            </div>
+          </div>
+
+          <!-- 组五：扩展与定制 -->
+          <div id="group-ext" class="faq-group card">
+            <div class="faq-group-head">
+              <div class="dot"></div><h2>扩展与定制</h2>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">如何证明代码规模满足软著？</button>
+              <div class="faq-answer">
+                仓库包含 <span class="kbd">行数统计.txt</span> 与 <span class="kbd">源码合并.txt</span>（带行号），可直接打印提交。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">能否迁移到小程序/APP/其他框架？</button>
+              <div class="faq-answer">
+                可以。页面结构语义化、样式变量化，迁移成本低；也可按组件化方式复用到任意前端框架。
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">是否支持二次开发插件化？</button>
+              <div class="faq-answer">
+                支持以事件总线/发布订阅封装交互；告警、分级、主题等均可作为可插拔模块独立演进。
+              </div>
+            </div>
+          </div>
+
+          <!-- 底部行动 -->
+          <div class="faq-end card">
+            <div class="faq-end-inner">
+              <div>
+                <h3>没找到你的问题？</h3>
+                <p class="muted">把问题发给我们，通常一个工作日内回复。</p>
+              </div>
+              <a class="btn btn-primary" href="contact.html">前往联系</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <b>关于项目</b>
+          <p>面向车载婴幼儿照护的界面与交互原型，便于演示与评审。</p>
+        </div>
+        <div>
+          <b>技术栈</b>
+          <p>原生 HTML / CSS / JS · 响应式布局 · 可离线预览。</p>
+        </div>
+        <div>
+          <b>声明</b>
+          <p>© 2025 伴行天使团队。仅作产品原型演示。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 公共脚本 -->
+  <script src="scripts/app.js"></script>
+
+  <!-- ===== 页面私有样式：只影响本页，覆盖默认视觉 ===== -->
+  <style>
+    /* 颜色与细节微调（不动全站变量） */
+    .faq-hero{
+      background: radial-gradient(1200px 400px at 20% -50%, #eef2ff 0%, transparent 60%),
+                  radial-gradient(900px 320px at 110% 10%, #ecfeff 0%, transparent 60%),
+                  #fff;
+      border-bottom: 1px solid var(--bd);
+    }
+    .faq-hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:48px 0}
+    .faq-hero h1{font-size:2.4rem;margin:.3em 0}
+    .faq-hero p{color:#475569}
+    .faq-hero-illu{border:1px solid var(--bd);border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .faq-hero-cta .btn{margin-right:10px}
+
+    .faq-body{display:grid;grid-template-columns:280px 1fr;gap:24px}
+    .faq-aside{position:sticky;top:88px;align-self:start}
+    .faq-toc{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--bd);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
+    .faq-toc a{padding:10px 12px;border-radius:10px;color:#334155;text-decoration:none;border:1px solid transparent}
+    .faq-toc a:hover{background:#eef2ff;border-color:#c7d2fe;color:#3730a3}
+    .faq-note{margin-top:12px}
+
+    .faq-content{display:flex;flex-direction:column;gap:18px}
+    .faq-group{padding:16px 16px 10px;border-radius:16px;border:1px solid var(--bd);background:#fff;box-shadow:var(--shadow)}
+    .faq-group-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+    .faq-group h2{margin:0}
+
+    /* 手风琴卡片 */
+    .faq-item{border:1px solid #e9edf3;border-radius:12px;background:#fbfdff;margin:10px 0;overflow:hidden}
+    .faq-item .faq-question{
+      appearance:none;width:100%;text-align:left;padding:14px 16px;background:#fff;border:0;cursor:pointer;
+      display:flex;justify-content:space-between;align-items:center;font-size:1.02rem;
+    }
+    .faq-item .faq-question:after{content:"展开";color:#64748b;font-size:.92rem}
+    .faq-item.active .faq-question:after{content:"收起"}
+    .faq-item .faq-answer{display:none;padding:12px 16px;border-top:1px dashed var(--bd);color:#334155;background:#f8fafc}
+    .faq-item.active .faq-answer{display:block;animation:faq-in .18s ease}
+    @keyframes faq-in{from{opacity:0;transform:translateY(-2px)}to{opacity:1;transform:translateY(0)}}
+
+    .faq-end{background:linear-gradient(135deg,#eef2ff,#ecfeff);border:1px solid var(--bd);border-radius:16px}
+    .faq-end-inner{display:flex;align-items:center;justify-content:space-between;padding:18px 16px}
+
+    .muted{color:#64748b}
+    code{background:#0b1020;color:#e2e8f0;padding:2px 6px;border-radius:6px}
+
+    @media (max-width:960px){
+      .faq-hero-inner{grid-template-columns:1fr}
+      .faq-body{grid-template-columns:1fr}
+      .faq-aside{position:static}
+      .faq-end-inner{flex-direction:column;gap:10px;align-items:flex-start}
+    }
+  </style>
+
+  <!-- ===== 页面私有脚本：更顺滑的折叠 + TOC 高亮 + 快速搜索 ===== -->
+  <script>
+    (function(){
+      const $ = (s, el=document)=>el.querySelector(s);
+      const $$ = (s, el=document)=>Array.from(el.querySelectorAll(s));
+
+      // 1) 手风琴（保留公共 app.js 的逻辑，这里增强：互斥展开 + 键盘可用）
+      $$('.faq-item').forEach(item=>{
+        const btn = $('.faq-question', item);
+        btn.setAttribute('aria-expanded','false');
+        btn.addEventListener('click', ()=>toggle(item));
+        btn.addEventListener('keydown', e=>{ if(e.key==='Enter' || e.key===' ') { e.preventDefault(); toggle(item); }});
+      });
+      function toggle(target){
+        // 同组互斥
+        const group = target.closest('.faq-group');
+        $$('.faq-item', group).forEach(it=>{
+          if(it!==target){ it.classList.remove('active'); $('.faq-question', it).setAttribute('aria-expanded','false'); }
+        });
+        const willOpen = !target.classList.contains('active');
+        target.classList.toggle('active', willOpen);
+        $('.faq-question', target).setAttribute('aria-expanded', String(willOpen));
+        // 平滑滚动至可见
+        if(willOpen) target.scrollIntoView({behavior:'smooth', block:'nearest'});
+      }
+
+      // 2) TOC 高亮（进入视口时高亮目录项）
+      const sections = $$('.faq-group');
+      const tocLinks = $$('.faq-toc a');
+      const io = new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{
+          if(e.isIntersecting){
+            tocLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#'+e.target.id));
+          }
+        });
+      }, {rootMargin:'-40% 0px -50% 0px', threshold:[0,1]});
+      sections.forEach(s=>io.observe(s));
+      // 目录激活态样式（用行内样式覆盖）
+      const style = document.createElement('style');
+      style.textContent = `.faq-toc a.active{background:#eef2ff;border-color:#c7d2fe;color:#3730a3;font-weight:700}`;
+      document.head.appendChild(style);
+
+      // 3) 快速搜索（按 / 弹出原生查找；或折叠内匹配）
+      document.addEventListener('keydown', e=>{
+        if(e.key === '/'){
+          e.preventDefault();
+          const term = prompt('搜索 FAQ 关键词（回车展开匹配项）：');
+          if(!term) return;
+          let hit = null;
+          $$('.faq-item').some(it=>{
+            const txt = it.innerText.toLowerCase();
+            if(txt.includes(term.toLowerCase())){ hit = it; return true; }
+            return false;
+          });
+          if(hit){ hit.classList.add('active'); hit.scrollIntoView({behavior:'smooth', block:'center'}); }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

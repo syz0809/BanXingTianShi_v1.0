@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>INDEX · 伴行天使-车载婴幼儿监护器</title>
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/components.css"/>
+  <link rel="stylesheet" href="styles/utilities.css"/>
+  <script src="scripts/app.js" defer></script>
+  <script src="scripts/sim.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo">伴</div>
+          <div>伴行天使·车载婴幼儿监护器</div>
+        </div>
+        <div class="nav-links"><button class="theme-toggle">主题</button><a href="index.html" class="active">首页</a><a href="features.html" class="">功能介绍</a><a href="device.html" class="">硬件与安装</a><a href="safety.html" class="">安全与告警</a><a href="privacy.html" class="">隐私与合规</a><a href="docs.html" class="">使用文档</a><a href="faq.html" class="">常见问题</a><a href="contact.html" class="">联系我们</a></div>
+        <div class="control-bar">
+          <button class="btn btn-ghost" data-action="toggle-theme" aria-pressed="false">☀️ 明亮</button>
+          <button class="btn btn-ghost" data-action="toggle-lang">中文</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <main><section class="section">
+  <div class="container">
+    <div class="section-title"><div class="dot"></div><h3 data-i18n="panel_title">模拟监护面板</h3></div>
+    <div id="sim-panel" class="card" role="region" aria-busy="false">
+      <div class="nojs-hint">本面板需要启用 JavaScript 才能交互。</div>
+      <div class="grid-3">
+        <div><small>姿态</small><div class="stat"><div class="num" data-field="posture">-</div></div></div>
+        <div><small>安全带</small><div class="stat"><div class="num"><span class="badge" data-field="belt">-</span></div></div></div>
+        <div><small>温度</small><div class="stat"><div class="num" data-field="temp">-</div></div></div>
+      </div>
+      <div class="m-10"><span class="badge" data-field="risk">-</span> <span class="m-10" data-field="note">-</span></div>
+      <div class="control-bar">
+        <button class="btn btn-primary" data-action="play"  data-i18n="start_demo">开始演示</button>
+        <button class="btn" data-action="pause" data-i18n="stop_demo">停止演示</button>
+        <button class="btn" data-action="prev" data-i18n="prev">上一步</button>
+        <button class="btn" data-action="next" data-i18n="next">下一步</button>
+        <button class="btn" data-action="reset" data-i18n="reset">重置</button>
+        <input type="range" class="w-100" min="0" value="0" data-field="progress" aria-label="进度"/>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="hero">
+  <div class="container">
+    <div class="grid">
+      <div class="card">
+        <h1>看见车内安全的每一秒</h1>
+        <p class="text-18">伴行天使为婴幼儿乘车场景提供“姿态、温度、安全带、昏睡”等状态可视化与交互面板。以下仪表盘为实时仿真演示。</p>
+        <div class="m-10">
+          <button id="btn-start-sim" class="btn btn-primary">启动仿真</button>
+          <button id="btn-stop-sim" class="btn">暂停仿真</button>
+        </div>
+        <div class="kpi m-10">
+          <div class="tile"><div>温度</div><div class="v" data-bind="temp">--</div></div>
+          <div class="tile"><div>安全带</div><div class="v" data-bind="seatbeltOn">--</div></div>
+          <div class="tile"><div>坐姿</div><div class="v" data-bind="posture">--</div></div>
+          <div class="tile"><div>状态</div><div class="v" data-bind="drowsy">--</div></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="section-title"><div class="dot"></div><h3>告警面板</h3></div>
+        <ul id="warnings" class="m-10"></ul>
+        <div class="accordion m-10">
+          <div class="acc-item">
+            <button class="acc-btn">告警说明</button>
+            <div class="acc-panel">
+              <p>系统依据温度、安全带、坐姿、昏睡与熄火在座等条件生成综合提示。</p>
+            </div>
+          </div>
+        </div>
+        <div class="callout">页面交互仅用于演示；实际产品可接入真实传感器。</div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+  <footer class="footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <b>关于项目</b>
+          <p>本网站为软著用展示代码，仅使用 HTML + CSS，不包含任何 JS 脚本。</p>
+        </div>
+        <div>
+          <b>技术栈</b>
+          <p>纯静态页面、响应式布局、可直接离线打开预览。</p>
+        </div>
+        <div>
+          <b>声明</b>
+          <p>© 2025 伴行天使团队。面向车载婴幼儿照护的可视化与交互演示。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="scripts/app.js"></script>
+</body>
+</html>

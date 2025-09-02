@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>隐私与偏好 · 伴行天使-车载婴幼儿监护器</title>
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/components.css"/>
+  <link rel="stylesheet" href="styles/utilities.css"/>
+</head>
+<body>
+  <!-- 顶部导航（保持一致） -->
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <img src="assets/logo-angel.svg" alt="logo" width="36" height="36" class="logo"/>
+          <div class="title">伴行天使 · 车载婴幼儿监护器</div>
+        </div>
+        <button class="menu-btn" data-action="toggle-menu">菜单</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">首页</a>
+          <a href="features.html">功能介绍</a>
+          <a href="device.html">硬件与安装</a>
+          <a href="safety.html">安全与告警</a>
+          <a class="active" href="privacy.html">隐私与合规</a>
+          <a href="docs.html">使用文档</a>
+          <a href="faq.html">常见问题</a>
+          <a href="contact.html">联系我们</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>隐私与偏好</h2></div>
+
+        <div class="card">
+          <p class="m-10">本演示不上传任何数据。你可以在下方设置是否允许将偏好保存到本地（<code>localStorage</code>）。</p>
+
+          <!-- 控制条 -->
+          <div class="prefs-row">
+            <label class="switch">
+              <input type="checkbox" id="consent">
+              <span class="slider"></span>
+            </label>
+            <span>授权保存本地偏好</span>
+            <span id="consent-state" class="muted">（未授权，仅会话有效）</span>
+          </div>
+
+          <!-- 表单网格 -->
+          <div class="prefs-grid">
+            <label>
+              <span>界面语言</span>
+              <select id="lang">
+                <option value="zh-CN">中文（简体）</option>
+                <option value="en">English</option>
+              </select>
+            </label>
+
+            <label>
+              <span>主题</span>
+              <select id="theme">
+                <option value="light">明亮</option>
+                <option value="dark">暗色</option>
+                <option value="auto">跟随系统</option>
+              </select>
+            </label>
+
+            <label>
+              <span>温度单位</span>
+              <select id="unit">
+                <option value="C">℃</option>
+                <option value="F">℉</option>
+              </select>
+            </label>
+
+            <label>
+              <span>低温阈值</span>
+              <input id="thLow" type="number" class="input" step="1" min="-40" max="60" value="18">
+            </label>
+
+            <label>
+              <span>高温阈值</span>
+              <input id="thHigh" type="number" class="input" step="1" min="-40" max="80" value="33">
+            </label>
+
+            <label>
+              <span>离座提醒</span>
+              <select id="away">
+                <option value="on">开启</option>
+                <option value="off">关闭</option>
+              </select>
+            </label>
+
+            <label>
+              <span>数据保留（天）</span>
+              <input id="retention" type="number" class="input" step="1" min="0" max="365" value="0">
+              <small class="muted">演示用途：0 表示不持久化。</small>
+            </label>
+          </div>
+
+          <!-- 操作按钮 -->
+          <div class="m-10">
+            <button class="btn btn-primary" id="save">保存偏好</button>
+            <button class="btn" id="reset">恢复默认</button>
+            <button class="btn" id="clear">清空存储</button>
+            <button class="btn btn-outline" id="export">导出并复制</button>
+            <button class="btn btn-outline" id="import">从下方 JSON 导入</button>
+          </div>
+
+          <!-- JSON 区 -->
+          <textarea id="json" rows="8" class="input" placeholder="偏好 JSON 将显示在这里…"></textarea>
+
+          <div id="tip" class="muted m-10"></div>
+        </div>
+
+        <div class="card m-10">
+          <b>合规提示</b>
+          <ul class="m-0 p-0" style="list-style:disc;margin-left:18px">
+            <li>演示不采集/上传个人信息；生产版需遵循《个人信息保护法》《数据安全法》等。</li>
+            <li>优先本地处理，仅在必要时上传脱敏摘要或事件标签，并提供查看与删除入口。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <b>关于项目</b>
+          <p>仅作车载婴幼儿监护的可视化与交互演示。</p>
+        </div>
+        <div>
+          <b>技术栈</b>
+          <p>HTML / CSS / JS · 离线预览 · 响应式</p>
+        </div>
+        <div>
+          <b>声明</b>
+          <p>© 2025 伴行天使团队。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 公共脚本 -->
+  <script src="scripts/app.js"></script>
+
+  <!-- 页面私有样式（仅本页） -->
+  <style>
+    .prefs-row{display:flex;align-items:center;gap:10px;margin:10px 0 18px}
+    .prefs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:8px 0}
+    .prefs-grid label{display:flex;flex-direction:column;gap:6px}
+    /* Switch */
+    .switch{position:relative;display:inline-block;width:48px;height:26px}
+    .switch input{opacity:0;width:0;height:0}
+    .slider{position:absolute;cursor:pointer;inset:0;background:#e5e7eb;border-radius:999px;transition:.2s}
+    .slider:before{content:"";position:absolute;height:20px;width:20px;left:3px;top:3px;background:white;border-radius:50%;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+    .switch input:checked + .slider{background:#4f46e5}
+    .switch input:checked + .slider:before{transform:translateX(22px)}
+    @media (max-width:960px){ .prefs-grid{grid-template-columns:1fr} }
+    #tip{min-height:1.2em}
+  </style>
+
+  <!-- 页面私有脚本（仅本页） -->
+  <script>
+  (function(){
+    const KEY = 'angel_prefs';
+    const $ = (s, el=document)=>el.querySelector(s);
+
+    // 默认值
+    const defaults = {
+      consent: false,
+      lang: 'zh-CN',
+      theme: 'light',
+      unit: 'C',
+      thresholds: { low: 18, high: 33 },
+      away: 'on',
+      retentionDays: 0,
+      updatedAt: null
+    };
+
+    let supportsLS = true;
+    try { localStorage.setItem('__t', '1'); localStorage.removeItem('__t'); }
+    catch(e){ supportsLS = false; }
+
+    const els = {
+      consent: $('#consent'),
+      lang: $('#lang'),
+      theme: $('#theme'),
+      unit: $('#unit'),
+      thLow: $('#thLow'),
+      thHigh: $('#thHigh'),
+      away: $('#away'),
+      retention: $('#retention'),
+      json: $('#json'),
+      tip: $('#tip'),
+      consentState: $('#consent-state'),
+      btnSave: $('#save'),
+      btnReset: $('#reset'),
+      btnClear: $('#clear'),
+      btnExport: $('#export'),
+      btnImport: $('#import')
+    };
+
+    function loadPrefs(){
+      let data = { ...defaults };
+      if(supportsLS){
+        const raw = localStorage.getItem(KEY);
+        if(raw){
+          try { data = { ...data, ...JSON.parse(raw) }; }
+          catch(e){ /* ignore */ }
+        }
+      }
+      return data;
+    }
+
+    function savePrefs(p){
+      p.updatedAt = new Date().toISOString();
+      if(supportsLS && p.consent){
+        localStorage.setItem(KEY, JSON.stringify(p));
+        tip('已保存到本地存储。');
+      }else{
+        tip('未授权/不支持 localStorage，仅在当前会话生效。');
+      }
+      renderJSON(p);
+    }
+
+    function clearPrefs(){
+      if(supportsLS) localStorage.removeItem(KEY);
+      tip('已清空本地存储。');
+    }
+
+    function renderUI(p){
+      els.consent.checked = !!p.consent;
+      els.lang.value = p.lang;
+      els.theme.value = p.theme;
+      els.unit.value = p.unit;
+      els.thLow.value = p.thresholds.low;
+      els.thHigh.value = p.thresholds.high;
+      els.away.value = p.away;
+      els.retention.value = p.retentionDays;
+      els.consentState.textContent = p.consent && supportsLS ? '（已授权，持久化开启）' : '（未授权，仅会话有效）';
+      renderJSON(p);
+    }
+
+    function readFromUI(){
+      return {
+        consent: els.consent.checked,
+        lang: els.lang.value,
+        theme: els.theme.value,
+        unit: els.unit.value,
+        thresholds: {
+          low: Number(els.thLow.value),
+          high: Number(els.thHigh.value)
+        },
+        away: els.away.value,
+        retentionDays: Number(els.retention.value),
+        updatedAt: null
+      };
+    }
+
+    function renderJSON(p){
+      els.json.value = JSON.stringify(p, null, 2);
+    }
+
+    function tip(msg){ els.tip.textContent = msg; }
+
+    // 初始渲染
+    let prefs = loadPrefs();
+    renderUI(prefs);
+
+    // 交互
+    els.btnSave.addEventListener('click', ()=>{
+      const p = readFromUI();
+      // 简单校验
+      if(p.thresholds.low >= p.thresholds.high){
+        tip('低温阈值必须小于高温阈值。'); return;
+      }
+      prefs = p;
+      savePrefs(p);
+    });
+
+    els.btnReset.addEventListener('click', ()=>{
+      prefs = { ...defaults };
+      renderUI(prefs);
+      tip('已恢复默认（未写入存储，点击“保存偏好”可写入）。');
+    });
+
+    els.btnClear.addEventListener('click', ()=>{
+      clearPrefs();
+      tip('已清空。');
+    });
+
+    els.btnExport.addEventListener('click', async ()=>{
+      const txt = JSON.stringify(readFromUI(), null, 2);
+      els.json.value = txt;
+      try{
+        await navigator.clipboard.writeText(txt);
+        tip('已复制到剪贴板。');
+      }catch(e){
+        tip('已生成 JSON，请手动复制。');
+      }
+    });
+
+    els.btnImport.addEventListener('click', ()=>{
+      const raw = els.json.value.trim();
+      if(!raw){ tip('请输入要导入的 JSON。'); return; }
+      try{
+        const obj = JSON.parse(raw);
+        prefs = { ...defaults, ...obj };
+        renderUI(prefs);
+        tip('已导入到界面（记得点击“保存偏好”写入存储）。');
+      }catch(e){
+        tip('JSON 格式不正确。');
+      }
+    });
+
+    // consent 改变时即时提示
+    els.consent.addEventListener('change', ()=>{
+      const p = readFromUI();
+      renderUI(p);
+      tip(p.consent ? '已同意本地持久化。' : '已关闭持久化，仅在本会话生效。');
+    });
+
+    // 没有 localStorage 的降级提示
+    if(!supportsLS){
+      tip('当前环境不支持 localStorage，本页将以“仅会话内临时保存”的方式运行。');
+    }
+  })();
+  </script>
+</body>
+</html>

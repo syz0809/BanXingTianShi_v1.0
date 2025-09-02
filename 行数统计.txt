@@ -1,0 +1,20 @@
+文件行数统计（软著可附）
+====================
+总行数：11443
+README.md: 45
+assets/data.json: 127
+contact.html: 94
+device.html: 67
+docs.html: 70
+faq.html: 83
+features.html: 104
+index.html: 105
+privacy.html: 62
+safety.html: 92
+scripts/app.js: 256
+scripts/sim.js: 91
+styles/base.css: 112
+styles/components.css: 69
+styles/utilities.css: 4661
+源码合并.txt: 5388
+行数统计.txt: 17

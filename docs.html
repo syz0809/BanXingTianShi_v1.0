@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>使用文档 · 伴行天使-车载婴幼儿监护器</title>
+  <link rel="stylesheet" href="styles/base.css"/>
+  <link rel="stylesheet" href="styles/components.css"/>
+  <link rel="stylesheet" href="styles/utilities.css"/>
+  <script src="scripts/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <img src="assets/logo-angel.svg" alt="logo" width="36" height="36" class="logo"/>
+          <div class="title">伴行天使 · 车载婴幼儿监护器</div>
+        </div>
+        <button class="menu-btn" data-action="toggle-menu">菜单</button>
+        <div class="nav-links" id="nav-links">
+          <a href="index.html">首页</a>
+          <a href="features.html">功能介绍</a>
+          <a href="device.html">硬件与安装</a>
+          <a href="safety.html">安全与告警</a>
+          <a href="privacy.html">隐私与合规</a>
+          <a class="active" href="docs.html">使用文档</a>
+          <a href="faq.html">常见问题</a>
+          <a href="contact.html">联系我们</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 快速开始 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>快速开始</h2></div>
+        <div class="card">
+          <ul>
+            <li>解压后双击 <span class="kbd">index.html</span> 预览界面；支持 Chrome/Edge/Safari/Firefox 最新版。</li>
+            <li>车机/平板可通过本地浏览器或 WebView 加载该页面文件夹进行演示。</li>
+            <li>本原型不包含真实检测算法，所有状态仅做交互展示；真实产品需接入硬件与后端。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使用注意事项（替代原“文件说明”） -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>使用注意事项（监护器）</h2></div>
+
+        <div class="grid-2">
+          <div class="card">
+            <b>安装与固定</b>
+            <ul class="doc-list">
+              <li>摄像头建议安装于后排中部上方，确保能完整覆盖婴幼儿安全座椅区域。</li>
+              <li>走线须避开安全气囊展开路径与安全带回收机构，避免挤压或锐利折弯。</li>
+              <li>支架需可靠固定，车辆行驶中不得松动、遮挡视线或妨碍驾驶操作。</li>
+              <li>首次安装后进行取景测试：确认坐姿区、固定带、头部区域在画面中无遮挡。</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <b>儿童约束与姿态</b>
+            <ul class="doc-list">
+              <li>婴幼儿必须使用符合标准的儿童安全座椅并正确系紧安全带/固定带。</li>
+              <li>监护器仅用于辅助观察，不应替代成人照护与合法的儿童约束装置。</li>
+              <li>行车前确认儿童未穿着过厚外套（影响束缚），头颈部支撑合适。</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <b>温度与通风</b>
+            <ul class="doc-list">
+              <li>夏季暴晒后舱内温度可能迅速升高，应先通风/降温再上车。</li>
+              <li>避免将设备长期暴露在≥60℃或≤-20℃的极端环境中；高温下请断电冷却。</li>
+              <li>冬季取暖时保持适度通风，避免直吹婴幼儿面部。</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <b>隐私与数据</b>
+            <ul class="doc-list">
+              <li>若启用录制/上传功能（生产版），需征得监护人明确同意并遵循最小化采集。</li>
+              <li>优先本地处理，必要时仅上传脱敏摘要或事件标签；提供查看与删除入口。</li>
+              <li>更换或报废设备前请清除本地存储数据，避免信息泄漏。</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <b>电源与安全</b>
+            <ul class="doc-list">
+              <li>接入车辆电源时应使用符合车规的降压模块与保险，严禁私拉乱接。</li>
+              <li>充电线缆远离儿童接触范围，避免缠绕/咬啮风险。</li>
+              <li>发现异常气味、冒烟或外壳高温时，立即断电并检查。</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <b>误报与异常</b>
+            <ul class="doc-list">
+              <li>强背光、夜间玻璃反射、遮挡物可能影响画面判断，注意人工复核。</li>
+              <li>车辆行驶震动或急刹会造成抖动，固定不牢也会增加误报概率。</li>
+              <li>设备仅提供提醒，不构成医疗或法律意义上的生命体征监测。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 可勾选的注意事项清单 -->
+        <div class="card m-10">
+          <div class="doc-toolbar">
+            <b>出车前检查清单</b>
+            <button class="btn btn-outline" id="print-doc">打印此页</button>
+          </div>
+          <ul class="checklist" id="preflight">
+            <li><label><input type="checkbox"> 摄像头画面覆盖安全座椅，取景无遮挡</label></li>
+            <li><label><input type="checkbox"> 线缆固定良好，不影响安全气囊/安全带</label></li>
+            <li><label><input type="checkbox"> 座椅/安全带/ISOFIX 已正确锁止</label></li>
+            <li><label><input type="checkbox"> 舱内温度已处于安全区间（通风/降温/升温）</label></li>
+            <li><label><input type="checkbox"> 设备通电正常，无异常气味/发热/报警</label></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 操作指引 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>操作指引</h2></div>
+        <div class="grid-3">
+          <div class="card">
+            <b>上车</b>
+            <ol class="doc-ol">
+              <li>检查座椅固定与角度，系好安全带/固定带。</li>
+              <li>开启空调或通风，使舱内温度达舒适区间。</li>
+              <li>确认监护器界面正常显示，状态位无异常。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <b>行驶中</b>
+            <ol class="doc-ol">
+              <li>避免频繁回头，主要通过界面观察；必要时靠边停车确认。</li>
+              <li>收到高温/离座等提示时，尽快采取安全处置措施。</li>
+            </ol>
+          </div>
+          <div class="card">
+            <b>停车与离车</b>
+            <ol class="doc-ol">
+              <li>熄火后确认儿童不在车内；不要把儿童独自留在车内。</li>
+              <li>断电/收纳设备，避免阳光直射和高温暴晒。</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 维护与保养 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>维护与保养</h2></div>
+        <div class="grid-2">
+          <div class="card">
+            <b>日常保养</b>
+            <ul class="doc-list">
+              <li>镜头用镜头纸或超纤布轻拭，勿用酒精/腐蚀性清洁剂。</li>
+              <li>定期检查支架与线缆固定状态，必要时重新粘贴或扎带固定。</li>
+              <li>长期停放请置于阴凉干燥处，防潮防尘。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <b>版本与更新</b>
+            <ul class="doc-list">
+              <li>生产版建议开启版本号标识与更新日志，确保可审计。</li>
+              <li>更新前备份配置，更新后做一次功能自检。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 故障排查 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>故障排查</h2></div>
+        <div class="card">
+          <table class="table">
+            <thead><tr><th>现象</th><th>可能原因</th><th>处理建议</th></tr></thead>
+            <tbody>
+              <tr><td>画面偏暗/偏白</td><td>强背光/夜间反射</td><td>调整安装角度，开启车内照明或使用遮光垫</td></tr>
+              <tr><td>提示频繁误报</td><td>设备抖动/遮挡</td><td>加固支架，清理遮挡物；必要时降低灵敏度</td></tr>
+              <tr><td>设备发热</td><td>阳光直射或散热不良</td><td>移至阴影处/改善通风，必要时断电冷却</td></tr>
+              <tr><td>无法供电</td><td>线缆/保险/车充异常</td><td>更换线缆/检查保险/更换车充</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 合规与免责声明 -->
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>合规与免责声明</h2></div>
+        <div class="card">
+          <ul class="doc-list">
+            <li>本原型不采集/存储个人信息；生产版需遵循《个人信息保护法》《数据安全法》等相关要求。</li>
+            <li>监护器仅提供提醒与可视化辅助，不替代成人看护及医疗设备。</li>
+            <li>请务必遵守当地道路交通法规与儿童乘车安全标准。</li>
+          </ul>
+          <p class="muted">更多细节见 <a href="privacy.html">隐私与合规</a> 与 <a href="faq.html">常见问题</a>。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid-3">
+        <div>
+          <b>关于项目</b>
+          <p>本页面面向实际使用环节的注意事项与操作指引。</p>
+        </div>
+        <div>
+          <b>技术栈</b>
+          <p>HTML / CSS / JS · 响应式布局 · 离线预览</p>
+        </div>
+        <div>
+          <b>声明</b>
+          <p>© 2025 伴行天使团队。仅作产品原型展示。</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== 页面私有样式（仅影响本页） ===== -->
+  <style>
+    .doc-list{margin:0;padding-left:18px}
+    .doc-list li{margin:.35em 0}
+    .doc-ol{margin:0;padding-left:18px}
+    .doc-ol li{margin:.35em 0}
+    .doc-toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .checklist{list-style:none;margin:0;padding:0}
+    .checklist li{padding:8px 0;border-bottom:1px dashed var(--bd)}
+    .checklist input{margin-right:8px;transform:scale(1.05)}
+    @media print{
+      .topbar,.footer,.menu-btn{display:none!important}
+      .card{box-shadow:none;border-color:#999}
+      .btn{display:none}
+      a{text-decoration:none;color:#000}
+      body{background:#fff}
+    }
+  </style>
+
+  <!-- ===== 页面私有脚本（仅影响本页） ===== -->
+  <script>
+    document.getElementById('print-doc')?.addEventListener('click', ()=>window.print());
+    // 统计清单完成度（可选）
+    const list = document.getElementById('preflight');
+    if(list){
+      list.addEventListener('change', ()=>{
+        const items = Array.from(list.querySelectorAll('input[type="checkbox"]'));
+        const done = items.filter(i=>i.checked).length;
+        document.title = `使用文档 · 完成度 ${done}/${items.length}`;
+      });
+    }
+  </script>
+</body>
+</html>
