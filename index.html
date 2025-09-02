@@ -9,6 +9,44 @@
   <link rel="stylesheet" href="styles/utilities.css"/>
   <script src="scripts/app.js" defer></script>
   <script src="scripts/sim.js" defer></script>
+  <style>
+    /* 顶部状态栏 */
+    .statusbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+    .statusbar .muted { color:#777; font-size:14px; }
+    .status-sep { width:1px; height:14px; background:#eee; margin:0 4px; }
+
+    /* 顶层卡片内的双列布局（左 KPI / 右 告警） */
+    .shell-grid { display:grid; gap:12px; }
+    @media (min-width: 960px){ .shell-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* 告警列表样式 */
+    #warnings { list-style:none; padding-left:0; }
+    #warnings li { padding:8px 10px; border:1px solid #f0f0f0; border-radius:10px; margin:8px 0; background:#fff; }
+    #warnings li .ts { color:#777; font-size:12px; margin-left:6px; }
+
+    /* 让 KPI 容器与每个小卡片内容居中 */
+    #sim-panel .kpi{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(140px, 1fr));
+      gap: 12px;
+      max-width: 720px;      /* 控制总宽度，便于整体水平居中 */
+      margin: 10px auto;     /* 关键：让整组居中 */
+    }
+    @media (max-width: 900px){
+      #sim-panel .kpi{ grid-template-columns: repeat(2, minmax(140px, 1fr)); }
+    }
+    #sim-panel .kpi .tile{
+      display: flex;
+      flex-direction: column;
+      align-items: center;    /* 水平居中标题与数值 */
+      justify-content: center;
+      text-align: center;
+    }
+    #sim-panel .kpi .tile .v{
+      font-weight: 700;
+      line-height: 1.2;
+    }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -18,88 +56,213 @@
           <div class="logo">伴</div>
           <div>伴行天使·车载婴幼儿监护器</div>
         </div>
-        <div class="nav-links"><button class="theme-toggle">主题</button><a href="index.html" class="active">首页</a><a href="features.html" class="">功能介绍</a><a href="device.html" class="">硬件与安装</a><a href="safety.html" class="">安全与告警</a><a href="privacy.html" class="">隐私与合规</a><a href="docs.html" class="">使用文档</a><a href="faq.html" class="">常见问题</a><a href="contact.html" class="">联系我们</a></div>
-        <div class="control-bar">
-          <button class="btn btn-ghost" data-action="toggle-theme" aria-pressed="false">☀️ 明亮</button>
-          <button class="btn btn-ghost" data-action="toggle-lang">中文</button>
+        <!-- 已移除：主题、明亮、中文 -->
+        <div class="nav-links">
+          <a href="index.html" class="active">首页</a>
+          <a href="features.html">功能介绍</a>
+          <a href="device.html">硬件与安装</a>
+          <a href="safety.html">安全与告警</a>
+          <a href="privacy.html">隐私与合规</a>
+          <a href="docs.html">使用文档</a>
+          <a href="faq.html">常见问题</a>
+          <a href="contact.html">联系我们</a>
         </div>
+        <!-- 已移除右侧 control-bar -->
       </nav>
     </div>
   </header>
-  <main><section class="section">
-  <div class="container">
-    <div class="section-title"><div class="dot"></div><h3 data-i18n="panel_title">模拟监护面板</h3></div>
-    <div id="sim-panel" class="card" role="region" aria-busy="false">
-      <div class="nojs-hint">本面板需要启用 JavaScript 才能交互。</div>
-      <div class="grid-3">
-        <div><small>姿态</small><div class="stat"><div class="num" data-field="posture">-</div></div></div>
-        <div><small>安全带</small><div class="stat"><div class="num"><span class="badge" data-field="belt">-</span></div></div></div>
-        <div><small>温度</small><div class="stat"><div class="num" data-field="temp">-</div></div></div>
-      </div>
-      <div class="m-10"><span class="badge" data-field="risk">-</span> <span class="m-10" data-field="note">-</span></div>
-      <div class="control-bar">
-        <button class="btn btn-primary" data-action="play"  data-i18n="start_demo">开始演示</button>
-        <button class="btn" data-action="pause" data-i18n="stop_demo">停止演示</button>
-        <button class="btn" data-action="prev" data-i18n="prev">上一步</button>
-        <button class="btn" data-action="next" data-i18n="next">下一步</button>
-        <button class="btn" data-action="reset" data-i18n="reset">重置</button>
-        <input type="range" class="w-100" min="0" value="0" data-field="progress" aria-label="进度"/>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="hero">
-  <div class="container">
-    <div class="grid">
-      <div class="card">
-        <h1>看见车内安全的每一秒</h1>
-        <p class="text-18">伴行天使为婴幼儿乘车场景提供“姿态、温度、安全带、昏睡”等状态可视化与交互面板。以下仪表盘为实时仿真演示。</p>
-        <div class="m-10">
-          <button id="btn-start-sim" class="btn btn-primary">启动仿真</button>
-          <button id="btn-stop-sim" class="btn">暂停仿真</button>
-        </div>
-        <div class="kpi m-10">
-          <div class="tile"><div>温度</div><div class="v" data-bind="temp">--</div></div>
-          <div class="tile"><div>安全带</div><div class="v" data-bind="seatbeltOn">--</div></div>
-          <div class="tile"><div>坐姿</div><div class="v" data-bind="posture">--</div></div>
-          <div class="tile"><div>状态</div><div class="v" data-bind="drowsy">--</div></div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="section-title"><div class="dot"></div><h3>告警面板</h3></div>
-        <ul id="warnings" class="m-10"></ul>
-        <div class="accordion m-10">
-          <div class="acc-item">
-            <button class="acc-btn">告警说明</button>
-            <div class="acc-panel">
-              <p>系统依据温度、安全带、坐姿、昏睡与熄火在座等条件生成综合提示。</p>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h3>车内监护面板</h3></div>
+
+        <!-- 顶层容器：包含（左）KPI 与（右）告警；上下为状态栏与系统提示 -->
+        <div id="sim-panel" class="card" role="region" aria-live="polite">
+          <!-- 顶部：状态栏（最上方） -->
+          <div class="statusbar m-10">
+            <span class="badge">在线</span>
+            <span class="badge">加密通道</span>
+            <span class="badge">信号良好</span>
+            <span class="status-sep" aria-hidden="true"></span>
+            <span class="muted">最近更新：<time id="last-updated">--:--:--</time></span>
+          </div>
+
+          <!-- 中部：左 KPI / 右 告警 -->
+          <div class="shell-grid">
+            <!-- 左：KPI 指标（已居中） -->
+            <div class="card">
+              <div class="kpi m-10">
+                <div class="tile"><div>温度</div><div class="v" data-bind="temp">--</div></div>
+                <div class="tile"><div>安全带</div><div class="v" data-bind="seatbeltOn">--</div></div>
+                <div class="tile"><div>坐姿</div><div class="v" data-bind="posture">--</div></div>
+                <div class="tile"><div>状态</div><div class="v" data-bind="drowsy">--</div></div>
+              </div>
+            </div>
+
+            <!-- 右：告警列表 -->
+            <div class="card">
+              <div class="section-title"><div class="dot"></div><h3>告警面板</h3></div>
+              <ul id="warnings" class="m-10"></ul>
             </div>
           </div>
+
+          <!-- 底部：系统提示（最下方） -->
+          <div class="m-10">
+            <span class="badge" id="risk-badge">系统提示</span>
+            <span class="m-10" id="note-text">通道已建立，正在接收座舱状态。</span>
+          </div>
         </div>
-        <div class="callout">页面交互仅用于演示；实际产品可接入真实传感器。</div>
       </div>
-    </div>
-  </div>
-</section>
-</main>
+    </section>
+  </main>
+
   <footer class="footer">
     <div class="container">
       <div class="grid-3">
         <div>
-          <b>关于项目</b>
-          <p>本网站为软著用展示代码，仅使用 HTML + CSS，不包含任何 JS 脚本。</p>
+          <b>项目定位</b>
+          <p>面向车载场景的婴幼儿安全看护与风险提醒系统，强调在途可视化与人机交互体验。</p>
         </div>
         <div>
-          <b>技术栈</b>
-          <p>纯静态页面、响应式布局、可直接离线打开预览。</p>
+          <b>隐私承诺</b>
+          <p>页面仅呈现必要状态信息，数据通道采用加密传输；不接入第三方统计/追踪脚本。</p>
         </div>
         <div>
-          <b>声明</b>
-          <p>© 2025 伴行天使团队。面向车载婴幼儿照护的可视化与交互演示。</p>
+          <b>版权与声明</b>
+          <p>© 2025 伴行天使团队。页面用于产品展示与学术交流，未经授权不得用于商业用途。</p>
         </div>
       </div>
     </div>
   </footer>
-  <script src="scripts/app.js"></script>
+
+  <!-- 实时刷新逻辑：随机微波动 + 规则告警 + 更新时间 -->
+  <script>
+    (function(){
+      // 更新时间（增强“实时感”）
+      const lastUpdated = document.getElementById('last-updated');
+      function tickClock(){
+        const d = new Date();
+        const hh = String(d.getHours()).padStart(2,'0');
+        const mm = String(d.getMinutes()).padStart(2,'0');
+        const ss = String(d.getSeconds()).padStart(2,'0');
+        if (lastUpdated) lastUpdated.textContent = hh+':'+mm+':'+ss;
+      }
+      setInterval(tickClock, 1000); tickClock();
+
+      // 绑定节点
+      const el = {
+        temp: document.querySelector('[data-bind="temp"]'),
+        seatbelt: document.querySelector('[data-bind="seatbeltOn"]'),
+        posture: document.querySelector('[data-bind="posture"]'),
+        drowsy: document.querySelector('[data-bind="drowsy"]'),
+        warnings: document.getElementById('warnings'),
+        risk: document.getElementById('risk-badge'),
+        note: document.getElementById('note-text')
+      };
+
+      // 初始状态
+      let state = {
+        temp: 25.6,           // 起始温度
+        seatbeltOn: false,    // 初始未系
+        posture: '正常坐姿',
+        drowsy: '清醒'
+      };
+
+      // 工具
+      const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
+      const ts = ()=> {
+        const d = new Date();
+        return [d.getHours(), d.getMinutes(), d.getSeconds()]
+          .map(n=>String(n).padStart(2,'0')).join(':');
+      };
+
+      // 计算告警
+      function evaluateWarnings(s){
+        const alerts = [];
+        let level = 0; // 0 正常；1 提示；2 注意；3 告警
+
+        if (s.temp >= 37.5) { alerts.push('座舱温度偏高'); level = Math.max(level, 2); }
+        if (s.temp >= 40)   { alerts.push('座舱温度过高，注意通风降温'); level = Math.max(level, 3); }
+        if (s.temp <= 10)   { alerts.push('座舱温度偏低'); level = Math.max(level, 2); }
+
+        if (!s.seatbeltOn)  { alerts.push('安全带未系'); level = Math.max(level, 3); }
+
+        if (s.posture !== '正常坐姿') { alerts.push('坐姿异常'); level = Math.max(level, 1); }
+
+        if (s.drowsy === '轻度瞌睡') { alerts.push('疑似瞌睡'); level = Math.max(level, 1); }
+        if (s.drowsy === '疑似入睡') { alerts.push('疑似入睡'); level = Math.max(level, 2); }
+
+        return {alerts, level};
+      }
+
+      // 追加告警
+      function pushWarning(msg, lvl){
+        if (!el.warnings) return;
+        const li = document.createElement('li');
+        const tag = document.createElement('span');
+        tag.className = 'badge';
+        tag.textContent = ['正常','提示','注意','告警'][lvl] || '提示';
+        const text = document.createElement('span');
+        text.textContent = ' ' + msg;
+        const time = document.createElement('span');
+        time.className = 'ts';
+        time.textContent = ts();
+        li.appendChild(tag); li.appendChild(text); li.appendChild(time);
+        el.warnings.prepend(li);
+        // 限制长度
+        const MAX = 6;
+        while (el.warnings.children.length > MAX) {
+          el.warnings.lastElementChild.remove();
+        }
+      }
+
+      // 渲染
+      function render(){
+        if (el.temp) el.temp.textContent = state.temp.toFixed(1) + ' °C';
+        if (el.seatbelt) el.seatbelt.textContent = state.seatbeltOn ? '已系' : '未系';
+        if (el.posture) el.posture.textContent = state.posture;
+        if (el.drowsy) el.drowsy.textContent = state.drowsy;
+
+        const {alerts, level} = evaluateWarnings(state);
+        if (el.risk) el.risk.textContent = ['正常','提示','注意','告警'][level] || '提示';
+        if (el.note) {
+          el.note.textContent = alerts.length ? alerts.join('；') : '通道已建立，正在接收座舱状态。';
+        }
+        if (alerts.length && level >= 2) {
+          pushWarning(alerts.join('；'), level);
+        }
+      }
+
+      // 随机微波动（1.2s 一次）
+      function step(){
+        // 温度：基础微动 + 低概率突变
+        const drift = (Math.random()*0.4 - 0.2);  // -0.2~+0.2
+        const spikeUp = Math.random() < 0.03 ? (Math.random()*1.5) : 0;
+        const spikeDn = Math.random() < 0.02 ? -(Math.random()*1.0) : 0;
+        state.temp = clamp(state.temp + drift + spikeUp + spikeDn, 5, 45);
+
+        // 安全带：低概率切换
+        if (Math.random() < 0.02) state.seatbeltOn = !state.seatbeltOn;
+
+        // 坐姿：以正常为主，偶发异常再恢复
+        const posturePool = ['正常坐姿','前倾','偏斜','弓身','侧躺'];
+        if (Math.random() < 0.08) {
+          state.posture = posturePool[Math.random() < 0.7 ? 0 : (1 + Math.floor(Math.random()*4))];
+        } else if (Math.random() < 0.02) {
+          state.posture = '正常坐姿';
+        }
+
+        // 瞌睡：大多数时间清醒
+        const p = Math.random();
+        state.drowsy = p < 0.80 ? '清醒' : (p < 0.94 ? '轻度瞌睡' : '疑似入睡');
+
+        render();
+      }
+
+      render();
+      setInterval(step, 1200);
+    })();
+  </script>
 </body>
 </html>
