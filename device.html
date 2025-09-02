@@ -7,6 +7,62 @@
   <link rel="stylesheet" href="styles/base.css"/>
   <link rel="stylesheet" href="styles/components.css"/>
   <link rel="stylesheet" href="styles/utilities.css"/>
+
+  <!-- 本页轻量样式：等高双列、竖图填充、描述区 -->
+  <style>
+    /* 双列等高（桌面端）；移动端自动单列 */
+    .grid-2 { display: grid; gap: 12px; }
+    @media (min-width: 1025px){
+      .grid-2 { grid-template-columns: 1.3fr 0.7fr; align-items: stretch; }
+    }
+
+    /* 右侧卡片：让图片视口占满卡片高度，从而与左侧容器同高 */
+    .image-card { display: flex; flex-direction: column; }
+    .image-card > b { margin-bottom: 8px; }
+    .image-viewport {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 240px;
+    }
+    .image-viewport img {
+      height: 100%;
+      width: auto; max-width: 100%;
+      object-fit: contain;
+      border-radius: 12px; border: 1px solid #f0f0f0;
+      box-shadow: 0 10px 28px rgba(0,0,0,.06);
+    }
+
+    /* 轻量 UI：徽标、清单、步骤、规格 */
+    .chips { display:flex; gap:8px; flex-wrap:wrap; margin:8px 0 4px; }
+    .chip {
+      display:inline-block; padding:4px 10px; border-radius:999px;
+      font-size:12px; font-weight:600; border:1px solid #eee; background:#fafafa; color:#444;
+    }
+    .chip-green { background:#e8f5e9; border-color:#dcedc8; color:#2e7d32; }
+    .chip-blue  { background:#e3f2fd; border-color:#bbdefb; color:#1565c0; }
+    .chip-gray  { background:#f5f5f5; border-color:#eee;    color:#555; }
+
+    .checklist { list-style:none; padding-left:0; margin:10px 0; }
+    .checklist li { display:flex; align-items:flex-start; gap:8px; margin:6px 0; }
+    .checklist li::before { content:"✓"; font-weight:700; color:#2e7d32; line-height:1.2; }
+
+    .steps { counter-reset: s; list-style:none; padding-left:0; margin:10px 0; }
+    .steps li { counter-increment: s; display:flex; gap:10px; align-items:flex-start; margin:8px 0; }
+    .steps li::before {
+      content: counter(s);
+      width:24px; height:24px; border-radius:50%;
+      display:inline-flex; align-items:center; justify-content:center;
+      background:#222; color:#fff; font-size:12px; font-weight:700; line-height:24px; flex:0 0 24px;
+    }
+
+    .spec-grid { display:grid; grid-template-columns: 140px 1fr; gap:8px 14px; }
+    .spec-grid dt { color:#666; }
+    .spec-grid dd { margin:0; color:#222; }
+    @media (max-width: 900px){ .spec-grid { grid-template-columns: 120px 1fr; } }
+
+    /* 下方描述 */
+    .desc p { color:#555; line-height: 1.7; }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -16,49 +72,108 @@
           <div class="logo">伴</div>
           <div>伴行天使·车载婴幼儿监护器</div>
         </div>
-        <div class="nav-links"><a href="index.html" class="">首页</a><a href="features.html" class="">功能介绍</a><a href="device.html" class="active">硬件与安装</a><a href="safety.html" class="">安全与告警</a><a href="privacy.html" class="">隐私与合规</a><a href="docs.html" class="">使用文档</a><a href="faq.html" class="">常见问题</a><a href="contact.html" class="">联系我们</a></div>
+        <div class="nav-links">
+          <a href="index.html" class="">首页</a>
+          <a href="features.html" class="">功能介绍</a>
+          <a href="device.html" class="active">硬件与安装</a>
+          <a href="safety.html" class="">安全与告警</a>
+          <a href="privacy.html" class="">隐私与合规</a>
+          <a href="docs.html" class="">使用文档</a>
+          <a href="faq.html" class="">常见问题</a>
+          <a href="contact.html" class="">联系我们</a>
+        </div>
       </nav>
     </div>
   </header>
-  <main>
-    
-<section class="section">
-  <div class="container">
-    <div class="section-title"><div class="dot"></div><h2>硬件与安装（示意）</h2></div>
-    <div class="grid-2">
-      <div class="card">
-        <b>设备组成</b>
-        <ul>
-          <li>座舱内摄像头（示意）</li>
-          <li>安全带扣位传感器（示意）</li>
-          <li>车载本地显示屏（HTML 页面容器）</li>
-        </ul>
-        <div class="callout m-10">图示为 UI 示例，实际传感器与数据接入并不包含在本仓库中。</div>
-      </div>
-      <div class="card">
-        <b>安装位置（示意）</b>
-        <p>推荐将摄像头安装于后排中部上方，确保覆盖婴幼儿安全座椅区域。</p>
-        <p>布线遵循车规，避免影响安全气囊与安全带回收机构。</p>
-      </div>
-    </div>
-  </div>
-</section>
 
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-title"><div class="dot"></div><h2>硬件与安装（演示）</h2></div>
+
+        <div class="grid-2">
+          <!-- 左侧：内容与 UI 组件 -->
+          <div class="card">
+            <div class="chips">
+              <span class="chip chip-blue">单图示意</span>
+              <span class="chip chip-green">离线演示</span>
+              <span class="chip chip-gray">不采集个人信息</span>
+            </div>
+
+            <p class="m-10">
+              本页展示<strong>设备整体形态</strong>与<strong>安装思路</strong>（示意）。用于软著与学术呈现，
+              不包含真实传感器接入、车规布线或数据处理流程。
+            </p>
+
+            <b>关键要点</b>
+            <ul class="checklist">
+              <li>摄像头建议位于后排中部上方，覆盖婴幼儿安全座椅区域。</li>
+              <li>布线需避开安全气囊与安全带回收机构，并做固定与防松处理。</li>
+              <li>显示端不遮挡驾驶视线，通电自检后确认画面与告警逻辑。</li>
+            </ul>
+
+            <b>安装流程（精简）</b>
+            <ol class="steps">
+              <li>固定支架 → 调整角度与覆盖范围，确保稳固可靠。</li>
+              <li>按车规走线 → 线夹/扎带固定，避开活动/高温部件。</li>
+              <li>上电自检 → 画面预览、告警逻辑与交互按钮自测。</li>
+            </ol>
+
+            <b>规格（示意）</b>
+            <dl class="spec-grid m-10">
+              <dt>供电</dt><dd>5V / 2A（示意）</dd>
+              <dt>接口</dt><dd>USB-C（示意）</dd>
+              <dt>安装</dt><dd>支架固定 + 车规布线思路</dd>
+              <dt>显示</dt><dd>本地页面容器（HTML）</dd>
+              <dt>用途</dt><dd>软著/学术展示的 UI 示意</dd>
+            </dl>
+
+            <div class="callout m-10">
+              静态 UI 演示：<u>不上传/存储任何个人信息</u>；不接入第三方统计/追踪脚本。
+            </div>
+          </div>
+
+          <!-- 右侧：设备演示图（与左容器等高） -->
+          <div class="card image-card">
+            <b>设备演示图</b>
+            <div class="image-viewport">
+              <!-- 522×670 竖图；保持如下尺寸声明可减少 CLS -->
+              <img
+                src="assets/device/nailong.png"
+                alt="伴行天使设备演示图（竖图示意）"
+                width="522" height="670"
+                loading="lazy" decoding="async">
+            </div>
+          </div>
+        </div>
+
+        <!-- 下方：仅保留描述文字（UI 图已按要求移除） -->
+        <div class="card m-10 desc">
+          <b>设备说明</b>
+          <p class="m-10">
+            该设备面向车载场景的人机交互需求，强调<strong>座舱可视化</strong>与<strong>异常提醒</strong>。
+            通过本地页面容器（HTML）呈现关键视图，强化驾驶者在不分散注意力的前提下完成状态确认与简单操作。
+            本页仅为界面与安装思路演示，不构成量产规格或合规承诺。
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer class="footer">
     <div class="container">
       <div class="grid-3">
         <div>
-          <b>关于项目</b>
-          <p>本网站为软著用展示代码，仅使用 HTML + CSS，不包含任何 JS 脚本。</p>
+          <b>项目定位</b>
+          <p>面向车载场景的婴幼儿安全看护与异常提醒系统。本页为界面与安装思路演示，不代表最终产品形态。</p>
         </div>
         <div>
-          <b>技术栈</b>
-          <p>纯静态页面、响应式布局、可直接离线打开预览。</p>
+          <b>隐私承诺</b>
+          <p>静态演示：不采集、存储或上传个人信息；不接入第三方统计/追踪脚本。</p>
         </div>
         <div>
-          <b>声明</b>
-          <p>© 2025 伴行天使团队。仅用于著作权登记与学术展示。</p>
+          <b>版权与声明</b>
+          <p>© 2025 伴行天使团队。页面用于著作权登记与学术展示，未经授权不得用于商业用途。</p>
         </div>
       </div>
     </div>
